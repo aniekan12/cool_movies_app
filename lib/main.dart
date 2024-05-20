@@ -1,20 +1,18 @@
 import 'dart:async';
-
-import 'package:accelerate_mobile_app/accelerate_mobile_app.dart';
-import 'package:accelerate_mobile_app/modules/notifications/app_notification_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:irecharge_app_module_starter/common/io/logger/logger_factory.dart';
 
 import 'common/di/locator.dart';
+import 'common/io/logger/logger.dart';
+import 'cool_movies_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await injectDependencies();
   registerErrorHandlers();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const CoolMoviesApp(isDebug: false));
+  runApp(const CoolMoviesApp());
 }
 
 void registerErrorHandlers() {
