@@ -1,4 +1,4 @@
-part of 'movies_home_bloc.dart';
+part of '../view_models/movies_home_viewmodel.dart';
 
 @immutable
 sealed class MoviesHomeEvent {}
