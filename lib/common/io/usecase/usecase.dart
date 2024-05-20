@@ -1,3 +1,3 @@
 abstract class UseCase<I, O> {
-  O invoke(I input);
+  Future<O> invoke(I input);
 }

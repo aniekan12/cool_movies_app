@@ -15,8 +15,7 @@ abstract class Movies with _$Movies {
     UserByUserCreatorId? userByUserCreatorId,
   }) = _Movies;
 
-  factory Movies.fromJson(Map<String, dynamic> json) =>
-      _$MoviesFromJson(json['allMovies']);
+  factory Movies.fromJson(Map<String, dynamic> json) => _$MoviesFromJson(json);
 }
 
 @freezed

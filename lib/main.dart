@@ -25,7 +25,3 @@ void registerErrorHandlers() {
     return true;
   };
 }
-
-// mary.a@istrategytech.com
-// virgoanstar@gmail.com
-// Password123
