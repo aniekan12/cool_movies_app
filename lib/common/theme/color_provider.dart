@@ -1,12 +1,9 @@
-import 'package:accelerate_mobile_app/common/gen/fonts.gen.dart';
-import 'package:accelerate_mobile_app/common/theme/color/accelerate_colors.dart';
-import 'package:accelerate_mobile_app/common/theme/schemes/alert_scheme.dart';
-import 'package:accelerate_mobile_app/common/theme/schemes/bottom_sheet_scheme.dart';
+import 'package:coolmovies/common/gen/fonts.gen.dart';
+import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'schemes/input_scheme.dart';
-import 'typography/text_styles.dart';
+import 'color/cool_movies_colors.dart';
 
 enum ThemePreference {
   dark,
@@ -44,141 +41,112 @@ class ColorProvider extends InheritedWidget {
       : darkTheme.colorScheme;
 
   MaterialColor get primaryColor => mode == ThemePreference.light
-      ? AccelerateColors.primary
-      : AccelerateColors.primary;
+      ? CoolMoviesColors.primary
+      : CoolMoviesColors.primary;
 
   Color get containerColor => currentScheme.primaryContainer;
 
   MaterialColor get errorColor => mode == ThemePreference.light
-      ? AccelerateColors.primary
-      : AccelerateColors.primary;
+      ? CoolMoviesColors.primary
+      : CoolMoviesColors.primary;
 
   Color get inActiveColor => mode == ThemePreference.light
-      ? AccelerateColors.neutral
-      : AccelerateColors.primary.shade600;
+      ? CoolMoviesColors.neutral
+      : CoolMoviesColors.primary.shade600;
 
   Color get successColor => mode == ThemePreference.light
-      ? AccelerateColors.successGreen
-      : AccelerateColors.successGreen;
+      ? CoolMoviesColors.successGreen
+      : CoolMoviesColors.successGreen;
 
   Color get greyBackground => mode == ThemePreference.light
-      ? AccelerateColors.grey
-      : AccelerateColors.black;
+      ? CoolMoviesColors.grey
+      : CoolMoviesColors.black;
 
   Color get primaryAlternate1 => mode == ThemePreference.light
-      ? AccelerateColors.primaryAlternate1.shade500
-      : AccelerateColors.primaryAlternate1.withAlpha(1);
+      ? CoolMoviesColors.primaryAlternate1.shade500
+      : CoolMoviesColors.primaryAlternate1.withAlpha(1);
 
   Color get alternateSupport1 => mode == ThemePreference.light
-      ? AccelerateColors.alternateSupport1
-      : AccelerateColors.alternateSupport1.shade900;
+      ? CoolMoviesColors.alternateSupport1
+      : CoolMoviesColors.alternateSupport1.shade900;
 
   MaterialColor get disabledColor => mode == ThemePreference.light
-      ? AccelerateColors.black
-      : AccelerateColors.primary;
+      ? CoolMoviesColors.black
+      : CoolMoviesColors.primary;
 
   Color get buttonTextPrimary => mode == ThemePreference.light
-      ? AccelerateColors.white
-      : AccelerateColors.white;
+      ? CoolMoviesColors.white
+      : CoolMoviesColors.white;
 
   Color get iconColor => mode == ThemePreference.light
-      ? AccelerateColors.black.shade500
-      : AccelerateColors.white;
+      ? CoolMoviesColors.black.shade500
+      : CoolMoviesColors.white;
 
   Color get iconFillColor => mode == ThemePreference.light
-      ? AccelerateColors.primary
-      : AccelerateColors.primary;
+      ? CoolMoviesColors.primary
+      : CoolMoviesColors.primary;
 
   Color get buttonPressedColor => mode == ThemePreference.light
-      ? AccelerateColors.primary.withOpacity(1)
-      : AccelerateColors.primary.withOpacity(0.3);
+      ? CoolMoviesColors.primary.withOpacity(1)
+      : CoolMoviesColors.primary.withOpacity(0.3);
 
   Color get textColor => mode == ThemePreference.light
-      ? AccelerateColors.black
-      : AccelerateColors.white;
+      ? CoolMoviesColors.black
+      : CoolMoviesColors.white;
 
   Color get cardTitleColor => mode == ThemePreference.light
-      ? AccelerateColors.headerText
-      : AccelerateColors.white;
+      ? CoolMoviesColors.headerText
+      : CoolMoviesColors.white;
 
   Color get cardSubTitleColor => mode == ThemePreference.light
-      ? AccelerateColors.bodyText
-      : AccelerateColors.white;
+      ? CoolMoviesColors.bodyText
+      : CoolMoviesColors.white;
 
   Color get subtitleColor => mode == ThemePreference.light
-      ? AccelerateColors.inputText
-      : AccelerateColors.inputText.shade200;
+      ? CoolMoviesColors.inputText
+      : CoolMoviesColors.inputText.shade200;
 
-  Color get success => AccelerateColors.successGreen;
+  Color get success => CoolMoviesColors.successGreen;
 
   Color get backgroundDefault => mode == ThemePreference.light
-      ? AccelerateColors.white
-      : AccelerateColors.black.shade500;
+      ? CoolMoviesColors.white
+      : CoolMoviesColors.black.shade500;
 
   Color get backgroundColor => mode == ThemePreference.light
-      ? AccelerateColors.greyBackground.shade400
-      : AccelerateColors.black;
+      ? CoolMoviesColors.greyBackground.shade400
+      : CoolMoviesColors.black;
 
   Color get cardColor => mode == ThemePreference.light
-      ? AccelerateColors.white
-      : AccelerateColors.grey.shade800;
-
-  AccelerateInputScheme get inputScheme => mode == ThemePreference.light
-      ? AccelerateInputScheme.light()
-      : AccelerateInputScheme.dark();
-
-  // CardColorScheme get cardScheme => mode == ThemePreference.light
-  //     ? CardColorScheme.light()
-  //     : CardColorScheme.dark();
+      ? CoolMoviesColors.white
+      : CoolMoviesColors.grey.shade800;
 
   Color get subtitleTextColor => mode == ThemePreference.light
       ? const Color(0xFF75808A)
-      : AccelerateColors.white.withOpacity(0.6);
-
-  // Color get cardTitleColor => mode == ThemePreference.light
-  //     ? AccelerateColors.black.shade600
-  //     : AccelerateColors.white.withOpacity(0.6);
+      : CoolMoviesColors.white.withOpacity(0.6);
 
   Color get dialogBarrierColor => mode == ThemePreference.light
-      ? AccelerateColors.black
-      : AccelerateColors.black;
+      ? CoolMoviesColors.black
+      : CoolMoviesColors.black;
 
   Color get iconBackgroundColor => mode == ThemePreference.light
-      ? AccelerateColors.primary.shade50
-      : AccelerateColors.primary.shade200;
-
-  AccelerateBottomSheetScheme get bottomSheetScheme =>
-      mode == ThemePreference.light
-          ? AccelerateBottomSheetScheme.light()
-          : AccelerateBottomSheetScheme.dark();
-
-  AccelerateAlertScheme get alertScheme => mode == ThemePreference.light
-      ? AccelerateAlertScheme.light()
-      : AccelerateAlertScheme.dark();
+      ? CoolMoviesColors.primary.shade50
+      : CoolMoviesColors.primary.shade200;
 
   Color get greyText => mode == ThemePreference.light
       ? const Color(0xFF505050)
       : const Color(0xFF505050);
 
   Color get horizontalStepperInactiveColor => mode == ThemePreference.light
-      ? AccelerateColors.grey.shade50
-      : AccelerateColors.grey.shade800;
+      ? CoolMoviesColors.grey.shade50
+      : CoolMoviesColors.grey.shade800;
 
   Color get shadowColor => mode == ThemePreference.light
       ? Colors.grey.withOpacity(0.08)
-      : AccelerateColors.black.shade800.withOpacity(0.5);
+      : CoolMoviesColors.black.shade800.withOpacity(0.5);
 
   Color get containerFade => mode == ThemePreference.light
       ? const Color(0xFFFAFAFA)
-      : AccelerateColors.black.shade800.withOpacity(0.5);
-
-  // Color get iconDisableBackgroundColor => mode == ThemePreference.light
-  //     ? AccelerateColors.tertiaryDarkBlue.opacity5
-  //     : AccelerateColors.white.opacity20;
-  //
-  // Color get iconDisableColor => mode == ThemePreference.light
-  //     ? AccelerateColors.tertiaryDarkBlue.opacity50
-  //     : AccelerateColors.white.opacity60;
+      : CoolMoviesColors.black.shade800.withOpacity(0.5);
 
   static ColorProvider of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<ColorProvider>()!;
@@ -195,14 +163,14 @@ class ColorProvider extends InheritedWidget {
 
   static ThemeData light() {
     final tabBarThemeLight = TabBarTheme(
-      unselectedLabelStyle: AccelerateTextStyle.body.small,
-      labelStyle: AccelerateTextStyle.body.small,
-      labelColor: AccelerateColors.primary,
+      unselectedLabelStyle: CoolMoviesTextStyle.body.small,
+      labelStyle: CoolMoviesTextStyle.body.small,
+      labelColor: CoolMoviesColors.primary,
       labelPadding: const EdgeInsets.symmetric(vertical: 0),
       indicator: const UnderlineTabIndicator(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(1), topRight: Radius.circular(1)),
-        borderSide: BorderSide(color: AccelerateColors.primary, width: 1.0),
+        borderSide: BorderSide(color: CoolMoviesColors.primary, width: 1.0),
         insets: EdgeInsets.fromLTRB(80.0, 0.0, 80.0, 0.0),
       ),
     );
@@ -210,44 +178,44 @@ class ColorProvider extends InheritedWidget {
     return ThemeData(
       useMaterial3: false,
       tabBarTheme: tabBarThemeLight,
-      fontFamily: AccelerateFonts.plusJakartaSans,
-      primaryColor: AccelerateColors.primary,
+      fontFamily: CoolMoviesFonts.plusJakartaSans,
+      primaryColor: CoolMoviesColors.primary,
       appBarTheme: AppBarTheme(
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: AccelerateColors.black, size: 22),
-        backgroundColor: AccelerateColors.white,
-        titleTextStyle: AccelerateTextStyle.body.small
-            .copyWith(color: AccelerateColors.black),
+        iconTheme: const IconThemeData(color: CoolMoviesColors.black, size: 22),
+        backgroundColor: CoolMoviesColors.white,
+        titleTextStyle: CoolMoviesTextStyle.body.small
+            .copyWith(color: CoolMoviesColors.black),
         systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: AccelerateColors.grey.shade50,
+            statusBarColor: CoolMoviesColors.grey.shade50,
             statusBarBrightness: Brightness.light,
             statusBarIconBrightness: Brightness.light),
       ),
-      scaffoldBackgroundColor: AccelerateColors.white,
+      scaffoldBackgroundColor: CoolMoviesColors.white,
       colorScheme: ColorScheme.light(
-          primary: AccelerateColors.primary,
-          primaryContainer: AccelerateColors.primary,
-          error: AccelerateColors.semanticRed,
-          background: AccelerateColors.grey.shade50,
-          surface: AccelerateColors.black.shade700,
-          onPrimary: AccelerateColors.white,
-          onBackground: AccelerateColors.black,
-          onSurface: AccelerateColors.black,
-          onError: AccelerateColors.white,
-          outline: AccelerateColors.primary),
+          primary: CoolMoviesColors.primary,
+          primaryContainer: CoolMoviesColors.primary,
+          error: CoolMoviesColors.semanticRed,
+          background: CoolMoviesColors.grey.shade50,
+          surface: CoolMoviesColors.black.shade700,
+          onPrimary: CoolMoviesColors.white,
+          onBackground: CoolMoviesColors.black,
+          onSurface: CoolMoviesColors.black,
+          onError: CoolMoviesColors.white,
+          outline: CoolMoviesColors.primary),
     );
   }
 
   static ThemeData dark() {
     final tabBarThemeLight = TabBarTheme(
-      unselectedLabelStyle: AccelerateTextStyle.body.small,
-      labelStyle: AccelerateTextStyle.body.small,
-      labelColor: AccelerateColors.primary,
+      unselectedLabelStyle: CoolMoviesTextStyle.body.small,
+      labelStyle: CoolMoviesTextStyle.body.small,
+      labelColor: CoolMoviesColors.primary,
       labelPadding: const EdgeInsets.symmetric(vertical: 0),
       indicator: const UnderlineTabIndicator(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(1), topRight: Radius.circular(1)),
-        borderSide: BorderSide(color: AccelerateColors.primary, width: 1.0),
+        borderSide: BorderSide(color: CoolMoviesColors.primary, width: 1.0),
         insets: EdgeInsets.fromLTRB(80.0, 0.0, 80.0, 0.0),
       ),
     );
@@ -255,32 +223,30 @@ class ColorProvider extends InheritedWidget {
     return ThemeData(
       useMaterial3: false,
       tabBarTheme: tabBarThemeLight,
-      fontFamily: AccelerateFonts.plusJakartaSans,
+      fontFamily: CoolMoviesFonts.plusJakartaSans,
       appBarTheme: AppBarTheme(
         elevation: 0.0,
         iconTheme: const IconThemeData(
-          color: AccelerateColors.primary,
+          color: CoolMoviesColors.primary,
         ),
-        backgroundColor: AccelerateColors.black,
-        titleTextStyle: AccelerateTextStyle.body.medium
-            .copyWith(color: AccelerateColors.white),
+        backgroundColor: CoolMoviesColors.black,
+        titleTextStyle: CoolMoviesTextStyle.body.medium
+            .copyWith(color: CoolMoviesColors.white),
         systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AccelerateColors.black,
+            statusBarColor: CoolMoviesColors.black,
             statusBarBrightness: Brightness.dark,
             statusBarIconBrightness: Brightness.dark),
       ),
-      scaffoldBackgroundColor: AccelerateColors.black,
+      scaffoldBackgroundColor: CoolMoviesColors.black,
       colorScheme: const ColorScheme.dark(
-          primary: AccelerateColors.primary,
-          primaryContainer: AccelerateColors.primary,
-          error: AccelerateColors.semanticRed,
-          background: AccelerateColors.black,
-          surface: AccelerateColors.black,
-          onPrimary: AccelerateColors.black,
-          onBackground: AccelerateColors.white,
-          onSurface: AccelerateColors.white,
-          onError: AccelerateColors.black,
-          outline: AccelerateColors.primary),
+          primary: CoolMoviesColors.primary,
+          primaryContainer: CoolMoviesColors.primary,
+          error: CoolMoviesColors.semanticRed,
+          surface: CoolMoviesColors.black,
+          onPrimary: CoolMoviesColors.black,
+          onSurface: CoolMoviesColors.white,
+          onError: CoolMoviesColors.black,
+          outline: CoolMoviesColors.primary),
     );
   }
 }

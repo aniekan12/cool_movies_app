@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AccelerateColors {
-
-  AccelerateColors._();
+class CoolMoviesColors {
+  CoolMoviesColors._();
 
   /// MaterialColor:
   ///   50: #FFFEF0E7
@@ -650,13 +649,13 @@ class AccelerateColors {
   static Color bgGreen = const Color(0xFF63C38F);
   static Color boyText2 = const Color(0xFF1C1C1C);
   static Color warningMustard = const Color(0xFFF5B546);
-  static Color backgroundLight = AccelerateColors.grey.shade50;
-  static Color backgroundDark = AccelerateColors.black;
+  static Color backgroundLight = CoolMoviesColors.grey.shade50;
+  static Color backgroundDark = CoolMoviesColors.black;
   static Color subtitleColor = const Color(0xFF4F4F4F);
   static Color textColor = const Color(0xFF505050);
   static Color inputBorderColor = const Color(0xFFF1F1F1);
   static Color inputFillColor = const Color(0xFFF4F6F9);
-  static Color inputFillColorDark = AccelerateColors.black.shade700;
+  static Color inputFillColorDark = CoolMoviesColors.black.shade700;
   static Color trueWhite = const Color(0xFFFFFFFF);
   static Color inputActiveBorderColor = const Color(0xFF1D1D1D);
   static Color inputActiveBorderColorDark = const Color(0xFFF1F1F1);

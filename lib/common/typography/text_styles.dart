@@ -1,8 +1,8 @@
 import 'body_text_styles.dart';
 import 'header_text_styles.dart';
 
-class AccelerateTextStyle {
-  const AccelerateTextStyle._();
+class CoolMoviesTextStyle {
+  const CoolMoviesTextStyle._();
 
   static TextHeaderStyle get header => TextHeaderStyle();
 
