@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/widgets.dart';
 
+/// @author Paul Okeke
+
 class SizeConfig {
   static late double screenWidth;
   static late double screenHeight;

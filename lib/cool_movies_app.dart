@@ -1,3 +1,4 @@
+import 'package:coolmovies/common/theme/color_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -20,8 +21,13 @@ class _AccelerateMobileAppState extends State<CoolMoviesApp> {
       designSize: const Size(393, 852),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp.router(
-        routerConfig: _router,
+      child: ColorProvider(
+        mode: ThemePreference.light,
+        lightTheme: ColorProvider.light(),
+        darkTheme: ColorProvider.dark(),
+        child: MaterialApp.router(
+          routerConfig: _router,
+        ),
       ),
     );
   }

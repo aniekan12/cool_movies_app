@@ -23,16 +23,16 @@ class ColorProvider extends InheritedWidget {
   final ThemeData lightTheme;
   final ThemeData darkTheme;
   final ThemePreference mode;
-  final VoidCallback toggleThemeMode;
-  final void Function(ThemePreference mode) setThemeMode;
+  final VoidCallback? toggleThemeMode;
+  final void Function(ThemePreference mode)? setThemeMode;
 
   const ColorProvider(
       {Key? key,
       required this.lightTheme,
       required this.darkTheme,
       required this.mode,
-      required this.toggleThemeMode,
-      required this.setThemeMode,
+      this.toggleThemeMode,
+      this.setThemeMode,
       required Widget child})
       : super(key: key, child: child);
 
