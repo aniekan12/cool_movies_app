@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:coolmovies/common/services/graphql_service.dart';
 import 'package:coolmovies/core/observer/cool_movies_bloc_observer.dart';
 import 'package:flutter/cupertino.dart';
