@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coolmovies/common/color/cool_movies_color.dart';
 import 'package:coolmovies/modules/movies_home/presentation/view_models/movies_home_viewmodel.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/movies_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -39,50 +40,15 @@ class _MoviesHomeScreenState extends State<MoviesHomeScreen> {
                     );
                   }
                   if (state is MoviesHomeLoaded) {
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            CachedNetworkImage(
-                              width: 100,
-                              imageUrl: state.movies.first.imgUrl!,
-                              placeholder: (context, url) =>
-                                  const CupertinoActivityIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                    return ListView.separated(
+                        separatorBuilder: (context, index) => const SizedBox(
+                              height: 30,
                             ),
-                          ],
-                        ),
-                        SizedBox(width: 10),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(state.movies.first.title!),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.calendar_today,
-                                  size: 12,
-                                ),
-                                SizedBox(width: 2),
-                                Text(state.movies.first.releaseDate!),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Icon(Icons.person, size: 12),
-                                SizedBox(width: 2),
-                                Text(state
-                                    .movies.first.userByUserCreatorId!.name!),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    );
+                        itemBuilder: (context, index) {
+                          return MoviesWidget(movies: state.movies[index]);
+                        },
+                        itemCount: state.movies.length,
+                        shrinkWrap: true);
                   }
                   return const SizedBox();
                 },

@@ -1,7 +1,9 @@
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/title_widget.dart';
+import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
+import 'image_widget.dart';
 
 class MoviesWidget extends StatelessWidget {
   final Movies movies;
@@ -14,38 +16,23 @@ class MoviesWidget extends StatelessWidget {
       children: [
         Column(
           children: [
-            CachedNetworkImage(
-              width: 100,
-              imageUrl: movies.imgUrl!,
-              placeholder: (context, url) => const CupertinoActivityIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+            CoolMoviesImageWidget.fromUrl(
+              imageUrl: movies.imgUrl.orEmpty,
             ),
           ],
         ),
-        SizedBox(width: 10),
+        10.verticalGap,
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(movies.title!),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Icon(
-                  Icons.calendar_today,
-                  size: 12,
-                ),
-                SizedBox(width: 2),
-                Text(state.movies.first.releaseDate!),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.person, size: 12),
-                SizedBox(width: 2),
-                Text(state.movies.first.userByUserCreatorId!.name!),
-              ],
-            )
+            20.verticalGap,
+            TitleWidget.withIcon(
+                title: movies.releaseDate.orEmpty, icon: Icons.calendar_today),
+            TitleWidget.withIcon(
+                title: movies.userByUserCreatorId!.name.orEmpty,
+                icon: Icons.person),
           ],
         )
       ],
