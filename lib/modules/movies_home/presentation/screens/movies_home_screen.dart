@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coolmovies/common/color/cool_movies_color.dart';
 import 'package:coolmovies/modules/movies_home/presentation/view_models/movies_home_viewmodel.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/movies_widget.dart';
+import 'package:coolmovies/modules/widgets/cool_movies_app_bar.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,7 @@ class _MoviesHomeScreenState extends State<MoviesHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Cool Movies'),
-      // ),
+      appBar: CoolMoviesAppBar.primary(title: 'Cool Movies'),
       backgroundColor: context.colorProvider.backgroundDefault,
       body: SafeArea(
         child: Padding(
