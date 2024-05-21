@@ -36,7 +36,7 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
       throw Exception(result.exception.toString());
     }
 
-    final List movies = result.data!['allMovies'];
+    final List movies = result.data!['allMovies']['nodes'];
     return movies.map((movie) => Movies.fromJson(movie)).toList();
   }
 }

@@ -1,7 +1,12 @@
 import 'dart:async';
+import 'dart:io';
+import 'package:coolmovies/common/services/graphql_service.dart';
+import 'package:coolmovies/core/observer/cool_movies_bloc_observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 import 'common/di/locator.dart';
 import 'common/io/logger/logger.dart';
@@ -12,7 +17,10 @@ Future<void> main() async {
   await injectDependencies();
   registerErrorHandlers();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const CoolMoviesApp());
+  Bloc.observer = const AppBlocObserver();
+  runApp(GraphQLProvider(
+      client: locator<GraphQLService>().initClient(),
+      child: const CoolMoviesApp()));
 }
 
 void registerErrorHandlers() {

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:coolmovies/common/services/graphql_service.dart';
 import 'package:coolmovies/core/navigation/app_router.dart';
 import 'package:coolmovies/modules/movies_home/data/data_source/movies_home_api_datasource.dart';
 import 'package:coolmovies/modules/movies_home/data/data_source/movies_home_api_datasource_impl.dart';
@@ -13,8 +16,11 @@ GetIt locator = GetIt.I;
 
 injectDependencies() async {
   locator.registerLazySingleton<GoRouter>(() => appRouter());
+
+  locator.registerLazySingleton<GraphQLService>(() => GraphQLService());
+
   locator.registerLazySingleton<GraphQLClient>(
-      () => GraphQLClient(link: HttpLink(''), cache: GraphQLCache()));
+      () => locator.get<GraphQLService>().initClient().value);
   locator.registerLazySingleton<MoviesHomeApiDatasource>(
       () => MoviesHomeApiDatasourceImpl(client: locator.get()));
   locator.registerLazySingleton<MoviesRepository>(
