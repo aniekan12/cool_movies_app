@@ -24,37 +24,38 @@ class _MoviesHomeScreenState extends State<MoviesHomeScreen> {
     super.initState();
   }
 
+//TODO: add appbar here
+//TODO: add details
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('Cool Movies'),
+      // ),
       backgroundColor: context.colorProvider.backgroundDefault,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              BlocBuilder<MoviesHomeViewmodel, MoviesHomeState>(
-                builder: (context, state) {
-                  if (state is MoviesHomeLoading) {
-                    return const Center(
-                      child: CupertinoActivityIndicator(),
-                    );
-                  }
-                  if (state is MoviesHomeLoaded) {
-                    return ListView.separated(
-                        separatorBuilder: (context, index) => const SizedBox(
-                              height: 30,
-                            ),
-                        itemBuilder: (context, index) {
-                          return MoviesWidget(movies: state.movies[index]);
-                        },
-                        itemCount: state.movies.length,
-                        shrinkWrap: true);
-                  }
-                  return const SizedBox();
-                },
-              )
-            ],
+          child: BlocBuilder<MoviesHomeViewmodel, MoviesHomeState>(
+            builder: (context, state) {
+              if (state is MoviesHomeLoading) {
+                return const Center(
+                  child: CupertinoActivityIndicator(),
+                );
+              }
+              if (state is MoviesHomeLoaded) {
+                return ListView.separated(
+                    separatorBuilder: (context, index) => const Divider(
+                          color: Colors.transparent,
+                        ),
+                    itemBuilder: (context, index) {
+                      return MoviesWidget(movies: state.movies[index]);
+                    },
+                    itemCount: state.movies.length,
+                    shrinkWrap: true);
+              }
+              return const SizedBox();
+            },
           ),
         ),
       ),

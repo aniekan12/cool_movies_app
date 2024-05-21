@@ -26,23 +26,26 @@ class MoviesWidget extends StatelessWidget {
           ],
         ),
         5.horizontalGap,
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              movies.title.orEmpty,
-              style: CoolMoviesTextStyle.header.mediumHeader
-                  .copyWith(color: context.colorProvider.cardTitleColor),
-            ),
-            20.verticalGap,
-            TitleWidget.withIcon(
-                title: movies.releaseDate.orEmpty, icon: Icons.calendar_today),
-            10.verticalGap,
-            TitleWidget.withIcon(
-                title: movies.userByUserCreatorId!.name.orEmpty,
-                icon: Icons.person),
-          ],
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                movies.title.orEmpty,
+                style: CoolMoviesTextStyle.header.mediumHeader
+                    .copyWith(color: context.colorProvider.cardTitleColor),
+              ),
+              20.verticalGap,
+              TitleWidget.withIcon(
+                  title: movies.releaseDate.orEmpty,
+                  icon: Icons.calendar_today),
+              10.verticalGap,
+              TitleWidget.withIcon(
+                  title: movies.userByUserCreatorId!.name.orEmpty,
+                  icon: Icons.person),
+            ],
+          ),
         )
       ],
     );
