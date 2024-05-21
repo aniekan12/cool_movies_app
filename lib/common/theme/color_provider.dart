@@ -95,7 +95,7 @@ class ColorProvider extends InheritedWidget {
       : CoolMoviesColors.white;
 
   Color get cardTitleColor => mode == ThemePreference.light
-      ? CoolMoviesColors.headerText
+      ? CoolMoviesColors.white
       : CoolMoviesColors.white;
 
   Color get cardSubTitleColor => mode == ThemePreference.light
@@ -109,7 +109,7 @@ class ColorProvider extends InheritedWidget {
   Color get success => CoolMoviesColors.successGreen;
 
   Color get backgroundDefault => mode == ThemePreference.light
-      ? CoolMoviesColors.white
+      ? CoolMoviesColors.black.shade400
       : CoolMoviesColors.black.shade500;
 
   Color get backgroundColor => mode == ThemePreference.light

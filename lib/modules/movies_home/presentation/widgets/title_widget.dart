@@ -1,3 +1,5 @@
+import 'package:coolmovies/common/color/cool_movies_color.dart';
+import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +41,12 @@ class TitleWidget extends StatelessWidget {
         Icon(
           icon,
           size: 12,
+          color: context.colorProvider.cardTitleColor,
         ),
-        if (icon != null) 2.horizontalGap else 0.horizontalGap,
-        Text(title),
+        if (icon != null) 8.horizontalGap else 0.horizontalGap,
+        Text(title,
+            style: CoolMoviesTextStyle.body.medium
+                .copyWith(color: context.colorProvider.cardTitleColor)),
       ],
     );
   }

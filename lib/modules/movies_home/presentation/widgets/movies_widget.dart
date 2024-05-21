@@ -1,3 +1,4 @@
+import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/title_widget.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
@@ -16,20 +17,28 @@ class MoviesWidget extends StatelessWidget {
       children: [
         Column(
           children: [
-            CoolMoviesImageWidget.fromUrl(
-              imageUrl: movies.imgUrl.orEmpty,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: CoolMoviesImageWidget.fromUrl(
+                imageUrl: movies.imgUrl.orEmpty,
+              ),
             ),
           ],
         ),
-        10.verticalGap,
+        5.horizontalGap,
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(movies.title!),
+            Text(
+              movies.title.orEmpty,
+              style: CoolMoviesTextStyle.header.mediumHeader
+                  .copyWith(color: context.colorProvider.cardTitleColor),
+            ),
             20.verticalGap,
             TitleWidget.withIcon(
                 title: movies.releaseDate.orEmpty, icon: Icons.calendar_today),
+            10.verticalGap,
             TitleWidget.withIcon(
                 title: movies.userByUserCreatorId!.name.orEmpty,
                 icon: Icons.person),

@@ -32,9 +32,10 @@ class CoolMoviesImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      width: width ?? context.mq.size.width * 0.3,
-      height: height ?? context.mq.size.width * 0.3,
+      width: width ?? context.mq.size.width * 0.4,
+      height: height ?? context.mq.size.height * 0.35,
       imageUrl: imageUrl,
+      fit: BoxFit.cover,
       placeholder: (context, url) => const CupertinoActivityIndicator(),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
