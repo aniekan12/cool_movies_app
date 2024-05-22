@@ -20,8 +20,6 @@ class _MoviesHomeScreenState extends State<MoviesHomeScreen> {
     super.initState();
   }
 
-//TODO: add appbar here
-//TODO: add details
   @override
   Widget build(BuildContext context) {
     return Scaffold(
