@@ -29,6 +29,7 @@ mixin _$Movies {
   String? get nodeId => throw _privateConstructorUsedError;
   UserByUserCreatorId? get userByUserCreatorId =>
       throw _privateConstructorUsedError;
+  MovieReviews? get movieReviewsByMovieId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,9 +49,11 @@ abstract class $MoviesCopyWith<$Res> {
       String? title,
       String? releaseDate,
       String? nodeId,
-      UserByUserCreatorId? userByUserCreatorId});
+      UserByUserCreatorId? userByUserCreatorId,
+      MovieReviews? movieReviewsByMovieId});
 
   $UserByUserCreatorIdCopyWith<$Res>? get userByUserCreatorId;
+  $MovieReviewsCopyWith<$Res>? get movieReviewsByMovieId;
 }
 
 /// @nodoc
@@ -74,6 +77,7 @@ class _$MoviesCopyWithImpl<$Res, $Val extends Movies>
     Object? releaseDate = freezed,
     Object? nodeId = freezed,
     Object? userByUserCreatorId = freezed,
+    Object? movieReviewsByMovieId = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -108,6 +112,10 @@ class _$MoviesCopyWithImpl<$Res, $Val extends Movies>
           ? _value.userByUserCreatorId
           : userByUserCreatorId // ignore: cast_nullable_to_non_nullable
               as UserByUserCreatorId?,
+      movieReviewsByMovieId: freezed == movieReviewsByMovieId
+          ? _value.movieReviewsByMovieId
+          : movieReviewsByMovieId // ignore: cast_nullable_to_non_nullable
+              as MovieReviews?,
     ) as $Val);
   }
 
@@ -121,6 +129,18 @@ class _$MoviesCopyWithImpl<$Res, $Val extends Movies>
     return $UserByUserCreatorIdCopyWith<$Res>(_value.userByUserCreatorId!,
         (value) {
       return _then(_value.copyWith(userByUserCreatorId: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MovieReviewsCopyWith<$Res>? get movieReviewsByMovieId {
+    if (_value.movieReviewsByMovieId == null) {
+      return null;
+    }
+
+    return $MovieReviewsCopyWith<$Res>(_value.movieReviewsByMovieId!, (value) {
+      return _then(_value.copyWith(movieReviewsByMovieId: value) as $Val);
     });
   }
 }
@@ -140,10 +160,13 @@ abstract class _$$MoviesImplCopyWith<$Res> implements $MoviesCopyWith<$Res> {
       String? title,
       String? releaseDate,
       String? nodeId,
-      UserByUserCreatorId? userByUserCreatorId});
+      UserByUserCreatorId? userByUserCreatorId,
+      MovieReviews? movieReviewsByMovieId});
 
   @override
   $UserByUserCreatorIdCopyWith<$Res>? get userByUserCreatorId;
+  @override
+  $MovieReviewsCopyWith<$Res>? get movieReviewsByMovieId;
 }
 
 /// @nodoc
@@ -165,6 +188,7 @@ class __$$MoviesImplCopyWithImpl<$Res>
     Object? releaseDate = freezed,
     Object? nodeId = freezed,
     Object? userByUserCreatorId = freezed,
+    Object? movieReviewsByMovieId = freezed,
   }) {
     return _then(_$MoviesImpl(
       id: freezed == id
@@ -199,6 +223,10 @@ class __$$MoviesImplCopyWithImpl<$Res>
           ? _value.userByUserCreatorId
           : userByUserCreatorId // ignore: cast_nullable_to_non_nullable
               as UserByUserCreatorId?,
+      movieReviewsByMovieId: freezed == movieReviewsByMovieId
+          ? _value.movieReviewsByMovieId
+          : movieReviewsByMovieId // ignore: cast_nullable_to_non_nullable
+              as MovieReviews?,
     ));
   }
 }
@@ -214,7 +242,8 @@ class _$MoviesImpl implements _Movies {
       this.title,
       this.releaseDate,
       this.nodeId,
-      this.userByUserCreatorId});
+      this.userByUserCreatorId,
+      this.movieReviewsByMovieId});
 
   factory _$MoviesImpl.fromJson(Map<String, dynamic> json) =>
       _$$MoviesImplFromJson(json);
@@ -235,10 +264,12 @@ class _$MoviesImpl implements _Movies {
   final String? nodeId;
   @override
   final UserByUserCreatorId? userByUserCreatorId;
+  @override
+  final MovieReviews? movieReviewsByMovieId;
 
   @override
   String toString() {
-    return 'Movies(id: $id, imgUrl: $imgUrl, movieDirectorId: $movieDirectorId, userCreatorId: $userCreatorId, title: $title, releaseDate: $releaseDate, nodeId: $nodeId, userByUserCreatorId: $userByUserCreatorId)';
+    return 'Movies(id: $id, imgUrl: $imgUrl, movieDirectorId: $movieDirectorId, userCreatorId: $userCreatorId, title: $title, releaseDate: $releaseDate, nodeId: $nodeId, userByUserCreatorId: $userByUserCreatorId, movieReviewsByMovieId: $movieReviewsByMovieId)';
   }
 
   @override
@@ -257,13 +288,24 @@ class _$MoviesImpl implements _Movies {
                 other.releaseDate == releaseDate) &&
             (identical(other.nodeId, nodeId) || other.nodeId == nodeId) &&
             (identical(other.userByUserCreatorId, userByUserCreatorId) ||
-                other.userByUserCreatorId == userByUserCreatorId));
+                other.userByUserCreatorId == userByUserCreatorId) &&
+            (identical(other.movieReviewsByMovieId, movieReviewsByMovieId) ||
+                other.movieReviewsByMovieId == movieReviewsByMovieId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, imgUrl, movieDirectorId,
-      userCreatorId, title, releaseDate, nodeId, userByUserCreatorId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      imgUrl,
+      movieDirectorId,
+      userCreatorId,
+      title,
+      releaseDate,
+      nodeId,
+      userByUserCreatorId,
+      movieReviewsByMovieId);
 
   @JsonKey(ignore: true)
   @override
@@ -288,7 +330,8 @@ abstract class _Movies implements Movies {
       final String? title,
       final String? releaseDate,
       final String? nodeId,
-      final UserByUserCreatorId? userByUserCreatorId}) = _$MoviesImpl;
+      final UserByUserCreatorId? userByUserCreatorId,
+      final MovieReviews? movieReviewsByMovieId}) = _$MoviesImpl;
 
   factory _Movies.fromJson(Map<String, dynamic> json) = _$MoviesImpl.fromJson;
 
@@ -308,6 +351,8 @@ abstract class _Movies implements Movies {
   String? get nodeId;
   @override
   UserByUserCreatorId? get userByUserCreatorId;
+  @override
+  MovieReviews? get movieReviewsByMovieId;
   @override
   @JsonKey(ignore: true)
   _$$MoviesImplCopyWith<_$MoviesImpl> get copyWith =>
@@ -483,5 +528,463 @@ abstract class _UserByUserCreatorId implements UserByUserCreatorId {
   @override
   @JsonKey(ignore: true)
   _$$UserByUserCreatorIdImplCopyWith<_$UserByUserCreatorIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MovieReviews _$MovieReviewsFromJson(Map<String, dynamic> json) {
+  return _MovieReviews.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MovieReviews {
+  List<Edges>? get edges => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MovieReviewsCopyWith<MovieReviews> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MovieReviewsCopyWith<$Res> {
+  factory $MovieReviewsCopyWith(
+          MovieReviews value, $Res Function(MovieReviews) then) =
+      _$MovieReviewsCopyWithImpl<$Res, MovieReviews>;
+  @useResult
+  $Res call({List<Edges>? edges});
+}
+
+/// @nodoc
+class _$MovieReviewsCopyWithImpl<$Res, $Val extends MovieReviews>
+    implements $MovieReviewsCopyWith<$Res> {
+  _$MovieReviewsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? edges = freezed,
+  }) {
+    return _then(_value.copyWith(
+      edges: freezed == edges
+          ? _value.edges
+          : edges // ignore: cast_nullable_to_non_nullable
+              as List<Edges>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MovieReviewsImplCopyWith<$Res>
+    implements $MovieReviewsCopyWith<$Res> {
+  factory _$$MovieReviewsImplCopyWith(
+          _$MovieReviewsImpl value, $Res Function(_$MovieReviewsImpl) then) =
+      __$$MovieReviewsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Edges>? edges});
+}
+
+/// @nodoc
+class __$$MovieReviewsImplCopyWithImpl<$Res>
+    extends _$MovieReviewsCopyWithImpl<$Res, _$MovieReviewsImpl>
+    implements _$$MovieReviewsImplCopyWith<$Res> {
+  __$$MovieReviewsImplCopyWithImpl(
+      _$MovieReviewsImpl _value, $Res Function(_$MovieReviewsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? edges = freezed,
+  }) {
+    return _then(_$MovieReviewsImpl(
+      edges: freezed == edges
+          ? _value._edges
+          : edges // ignore: cast_nullable_to_non_nullable
+              as List<Edges>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MovieReviewsImpl implements _MovieReviews {
+  const _$MovieReviewsImpl({final List<Edges>? edges}) : _edges = edges;
+
+  factory _$MovieReviewsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MovieReviewsImplFromJson(json);
+
+  final List<Edges>? _edges;
+  @override
+  List<Edges>? get edges {
+    final value = _edges;
+    if (value == null) return null;
+    if (_edges is EqualUnmodifiableListView) return _edges;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'MovieReviews(edges: $edges)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MovieReviewsImpl &&
+            const DeepCollectionEquality().equals(other._edges, _edges));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_edges));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MovieReviewsImplCopyWith<_$MovieReviewsImpl> get copyWith =>
+      __$$MovieReviewsImplCopyWithImpl<_$MovieReviewsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MovieReviewsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MovieReviews implements MovieReviews {
+  const factory _MovieReviews({final List<Edges>? edges}) = _$MovieReviewsImpl;
+
+  factory _MovieReviews.fromJson(Map<String, dynamic> json) =
+      _$MovieReviewsImpl.fromJson;
+
+  @override
+  List<Edges>? get edges;
+  @override
+  @JsonKey(ignore: true)
+  _$$MovieReviewsImplCopyWith<_$MovieReviewsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Edges _$EdgesFromJson(Map<String, dynamic> json) {
+  return _Edges.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Edges {
+  Nodes? get node => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EdgesCopyWith<Edges> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EdgesCopyWith<$Res> {
+  factory $EdgesCopyWith(Edges value, $Res Function(Edges) then) =
+      _$EdgesCopyWithImpl<$Res, Edges>;
+  @useResult
+  $Res call({Nodes? node});
+
+  $NodesCopyWith<$Res>? get node;
+}
+
+/// @nodoc
+class _$EdgesCopyWithImpl<$Res, $Val extends Edges>
+    implements $EdgesCopyWith<$Res> {
+  _$EdgesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? node = freezed,
+  }) {
+    return _then(_value.copyWith(
+      node: freezed == node
+          ? _value.node
+          : node // ignore: cast_nullable_to_non_nullable
+              as Nodes?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NodesCopyWith<$Res>? get node {
+    if (_value.node == null) {
+      return null;
+    }
+
+    return $NodesCopyWith<$Res>(_value.node!, (value) {
+      return _then(_value.copyWith(node: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$EdgesImplCopyWith<$Res> implements $EdgesCopyWith<$Res> {
+  factory _$$EdgesImplCopyWith(
+          _$EdgesImpl value, $Res Function(_$EdgesImpl) then) =
+      __$$EdgesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Nodes? node});
+
+  @override
+  $NodesCopyWith<$Res>? get node;
+}
+
+/// @nodoc
+class __$$EdgesImplCopyWithImpl<$Res>
+    extends _$EdgesCopyWithImpl<$Res, _$EdgesImpl>
+    implements _$$EdgesImplCopyWith<$Res> {
+  __$$EdgesImplCopyWithImpl(
+      _$EdgesImpl _value, $Res Function(_$EdgesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? node = freezed,
+  }) {
+    return _then(_$EdgesImpl(
+      node: freezed == node
+          ? _value.node
+          : node // ignore: cast_nullable_to_non_nullable
+              as Nodes?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EdgesImpl implements _Edges {
+  const _$EdgesImpl({this.node});
+
+  factory _$EdgesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EdgesImplFromJson(json);
+
+  @override
+  final Nodes? node;
+
+  @override
+  String toString() {
+    return 'Edges(node: $node)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EdgesImpl &&
+            (identical(other.node, node) || other.node == node));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, node);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EdgesImplCopyWith<_$EdgesImpl> get copyWith =>
+      __$$EdgesImplCopyWithImpl<_$EdgesImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EdgesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Edges implements Edges {
+  const factory _Edges({final Nodes? node}) = _$EdgesImpl;
+
+  factory _Edges.fromJson(Map<String, dynamic> json) = _$EdgesImpl.fromJson;
+
+  @override
+  Nodes? get node;
+  @override
+  @JsonKey(ignore: true)
+  _$$EdgesImplCopyWith<_$EdgesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Nodes _$NodesFromJson(Map<String, dynamic> json) {
+  return _Nodes.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Nodes {
+  String? get id => throw _privateConstructorUsedError;
+  int? get rating => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NodesCopyWith<Nodes> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NodesCopyWith<$Res> {
+  factory $NodesCopyWith(Nodes value, $Res Function(Nodes) then) =
+      _$NodesCopyWithImpl<$Res, Nodes>;
+  @useResult
+  $Res call({String? id, int? rating, String? title});
+}
+
+/// @nodoc
+class _$NodesCopyWithImpl<$Res, $Val extends Nodes>
+    implements $NodesCopyWith<$Res> {
+  _$NodesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? rating = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NodesImplCopyWith<$Res> implements $NodesCopyWith<$Res> {
+  factory _$$NodesImplCopyWith(
+          _$NodesImpl value, $Res Function(_$NodesImpl) then) =
+      __$$NodesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id, int? rating, String? title});
+}
+
+/// @nodoc
+class __$$NodesImplCopyWithImpl<$Res>
+    extends _$NodesCopyWithImpl<$Res, _$NodesImpl>
+    implements _$$NodesImplCopyWith<$Res> {
+  __$$NodesImplCopyWithImpl(
+      _$NodesImpl _value, $Res Function(_$NodesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? rating = freezed,
+    Object? title = freezed,
+  }) {
+    return _then(_$NodesImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NodesImpl implements _Nodes {
+  const _$NodesImpl({this.id, this.rating, this.title});
+
+  factory _$NodesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NodesImplFromJson(json);
+
+  @override
+  final String? id;
+  @override
+  final int? rating;
+  @override
+  final String? title;
+
+  @override
+  String toString() {
+    return 'Nodes(id: $id, rating: $rating, title: $title)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NodesImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, rating, title);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NodesImplCopyWith<_$NodesImpl> get copyWith =>
+      __$$NodesImplCopyWithImpl<_$NodesImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NodesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Nodes implements Nodes {
+  const factory _Nodes(
+      {final String? id, final int? rating, final String? title}) = _$NodesImpl;
+
+  factory _Nodes.fromJson(Map<String, dynamic> json) = _$NodesImpl.fromJson;
+
+  @override
+  String? get id;
+  @override
+  int? get rating;
+  @override
+  String? get title;
+  @override
+  @JsonKey(ignore: true)
+  _$$NodesImplCopyWith<_$NodesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

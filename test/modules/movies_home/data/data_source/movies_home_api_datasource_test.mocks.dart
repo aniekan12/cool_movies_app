@@ -100,14 +100,14 @@ class _FakeQueryResult_6<TParsed1 extends Object?> extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
+  MockGraphQLClient() {
+    _i1.throwOnMissingStub(this);
+  }
+
   @override
   _i2.DefaultPolicies get defaultPolicies => (super.noSuchMethod(
         Invocation.getter(#defaultPolicies),
         returnValue: _FakeDefaultPolicies_0(
-          this,
-          Invocation.getter(#defaultPolicies),
-        ),
-        returnValueForMissingStub: _FakeDefaultPolicies_0(
           this,
           Invocation.getter(#defaultPolicies),
         ),
@@ -130,10 +130,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
           this,
           Invocation.getter(#link),
         ),
-        returnValueForMissingStub: _FakeLink_1(
-          this,
-          Invocation.getter(#link),
-        ),
       ) as _i2.Link);
 
   @override
@@ -143,20 +139,12 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
           this,
           Invocation.getter(#cache),
         ),
-        returnValueForMissingStub: _FakeGraphQLCache_2(
-          this,
-          Invocation.getter(#cache),
-        ),
       ) as _i3.GraphQLCache);
 
   @override
   _i2.QueryManager get queryManager => (super.noSuchMethod(
         Invocation.getter(#queryManager),
         returnValue: _FakeQueryManager_3(
-          this,
-          Invocation.getter(#queryManager),
-        ),
-        returnValueForMissingStub: _FakeQueryManager_3(
           this,
           Invocation.getter(#queryManager),
         ),
@@ -202,19 +190,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
             },
           ),
         ),
-        returnValueForMissingStub: _FakeGraphQLClient_4(
-          this,
-          Invocation.method(
-            #copyWith,
-            [],
-            {
-              #link: link,
-              #cache: cache,
-              #defaultPolicies: defaultPolicies,
-              #alwaysRebroadcast: alwaysRebroadcast,
-            },
-          ),
-        ),
       ) as _i4.GraphQLClient);
 
   @override
@@ -226,13 +201,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
           [options],
         ),
         returnValue: _FakeObservableQuery_5<TParsed>(
-          this,
-          Invocation.method(
-            #watchQuery,
-            [options],
-          ),
-        ),
-        returnValueForMissingStub: _FakeObservableQuery_5<TParsed>(
           this,
           Invocation.method(
             #watchQuery,
@@ -256,13 +224,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
             [options],
           ),
         ),
-        returnValueForMissingStub: _FakeObservableQuery_5<TParsed>(
-          this,
-          Invocation.method(
-            #watchMutation,
-            [options],
-          ),
-        ),
       ) as _i2.ObservableQuery<TParsed>);
 
   @override
@@ -274,14 +235,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
           [options],
         ),
         returnValue: _i5.Future<_i2.QueryResult<TParsed>>.value(
-            _FakeQueryResult_6<TParsed>(
-          this,
-          Invocation.method(
-            #query,
-            [options],
-          ),
-        )),
-        returnValueForMissingStub: _i5.Future<_i2.QueryResult<TParsed>>.value(
             _FakeQueryResult_6<TParsed>(
           this,
           Invocation.method(
@@ -307,14 +260,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
             [options],
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i2.QueryResult<TParsed>>.value(
-            _FakeQueryResult_6<TParsed>(
-          this,
-          Invocation.method(
-            #mutate,
-            [options],
-          ),
-        )),
       ) as _i5.Future<_i2.QueryResult<TParsed>>);
 
   @override
@@ -326,7 +271,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
           [options],
         ),
         returnValue: _i5.Stream<_i2.QueryResult<TParsed>>.empty(),
-        returnValueForMissingStub: _i5.Stream<_i2.QueryResult<TParsed>>.empty(),
       ) as _i5.Stream<_i2.QueryResult<TParsed>>);
 
   @override
@@ -356,18 +300,6 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
             },
           ),
         )),
-        returnValueForMissingStub: _i5.Future<_i2.QueryResult<TParsed>>.value(
-            _FakeQueryResult_6<TParsed>(
-          this,
-          Invocation.method(
-            #fetchMore,
-            [fetchMoreOptions],
-            {
-              #originalOptions: originalOptions,
-              #previousResult: previousResult,
-            },
-          ),
-        )),
       ) as _i5.Future<_i2.QueryResult<TParsed>>);
 
   @override
@@ -375,28 +307,22 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
     _i2.Request? request, {
     bool? optimistic = true,
   }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #readQuery,
-          [request],
-          {#optimistic: optimistic},
-        ),
-        returnValueForMissingStub: null,
-      ) as Map<String, dynamic>?);
+      (super.noSuchMethod(Invocation.method(
+        #readQuery,
+        [request],
+        {#optimistic: optimistic},
+      )) as Map<String, dynamic>?);
 
   @override
   Map<String, dynamic>? readFragment(
     _i3.FragmentRequest? fragmentRequest, {
     bool? optimistic = true,
   }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #readFragment,
-          [fragmentRequest],
-          {#optimistic: optimistic},
-        ),
-        returnValueForMissingStub: null,
-      ) as Map<String, dynamic>?);
+      (super.noSuchMethod(Invocation.method(
+        #readFragment,
+        [fragmentRequest],
+        {#optimistic: optimistic},
+      )) as Map<String, dynamic>?);
 
   @override
   void writeQuery(
@@ -437,12 +363,9 @@ class MockGraphQLClient extends _i1.Mock implements _i4.GraphQLClient {
   @override
   _i5.Future<List<_i2.QueryResult<Object?>?>>? resetStore(
           {bool? refetchQueries = true}) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #resetStore,
-          [],
-          {#refetchQueries: refetchQueries},
-        ),
-        returnValueForMissingStub: null,
-      ) as _i5.Future<List<_i2.QueryResult<Object?>?>>?);
+      (super.noSuchMethod(Invocation.method(
+        #resetStore,
+        [],
+        {#refetchQueries: refetchQueries},
+      )) as _i5.Future<List<_i2.QueryResult<Object?>?>>?);
 }

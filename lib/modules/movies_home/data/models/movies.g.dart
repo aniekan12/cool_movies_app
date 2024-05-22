@@ -18,6 +18,10 @@ _$MoviesImpl _$$MoviesImplFromJson(Map<String, dynamic> json) => _$MoviesImpl(
           ? null
           : UserByUserCreatorId.fromJson(
               json['userByUserCreatorId'] as Map<String, dynamic>),
+      movieReviewsByMovieId: json['movieReviewsByMovieId'] == null
+          ? null
+          : MovieReviews.fromJson(
+              json['movieReviewsByMovieId'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MoviesImplToJson(_$MoviesImpl instance) =>
@@ -30,6 +34,7 @@ Map<String, dynamic> _$$MoviesImplToJson(_$MoviesImpl instance) =>
       'releaseDate': instance.releaseDate,
       'nodeId': instance.nodeId,
       'userByUserCreatorId': instance.userByUserCreatorId,
+      'movieReviewsByMovieId': instance.movieReviewsByMovieId,
     };
 
 _$UserByUserCreatorIdImpl _$$UserByUserCreatorIdImplFromJson(
@@ -46,4 +51,40 @@ Map<String, dynamic> _$$UserByUserCreatorIdImplToJson(
       'id': instance.id,
       'name': instance.name,
       'nodeId': instance.nodeId,
+    };
+
+_$MovieReviewsImpl _$$MovieReviewsImplFromJson(Map<String, dynamic> json) =>
+    _$MovieReviewsImpl(
+      edges: (json['edges'] as List<dynamic>?)
+          ?.map((e) => Edges.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$MovieReviewsImplToJson(_$MovieReviewsImpl instance) =>
+    <String, dynamic>{
+      'edges': instance.edges,
+    };
+
+_$EdgesImpl _$$EdgesImplFromJson(Map<String, dynamic> json) => _$EdgesImpl(
+      node: json['node'] == null
+          ? null
+          : Nodes.fromJson(json['node'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$EdgesImplToJson(_$EdgesImpl instance) =>
+    <String, dynamic>{
+      'node': instance.node,
+    };
+
+_$NodesImpl _$$NodesImplFromJson(Map<String, dynamic> json) => _$NodesImpl(
+      id: json['id'] as String?,
+      rating: (json['rating'] as num?)?.toInt(),
+      title: json['title'] as String?,
+    );
+
+Map<String, dynamic> _$$NodesImplToJson(_$NodesImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'rating': instance.rating,
+      'title': instance.title,
     };

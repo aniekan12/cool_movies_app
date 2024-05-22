@@ -11,26 +11,40 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
   final GraphQLClient _client;
   @override
   Future<List<Movies>> getMovies() async {
-    final result = await _client.query(QueryOptions(document: gql(r"""
+    final result = await _client.query(
+      QueryOptions(
+        document: gql(r"""
           query AllMovies {
-            allMovies {
-              nodes {
-                id
-                imgUrl
-                movieDirectorId
-                userCreatorId
-                title
-                releaseDate
-                nodeId
-                userByUserCreatorId {
-                  id
-                  name
-                  nodeId
-                }
-              }
-            }
+  allMovies {
+    nodes {
+      id
+      imgUrl
+      movieDirectorId
+      userCreatorId
+      title
+      releaseDate
+      nodeId
+      userByUserCreatorId {
+        id
+        name
+        nodeId
+      }
+      movieReviewsByMovieId {
+        edges {
+          node {
+            id
+            rating
+            title
+            body
           }
-        """)));
+        }
+      }
+    }
+  }
+}
+        """),
+      ),
+    );
 
     if (result.hasException) {
       throw Exception(result.exception.toString());

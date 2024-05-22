@@ -168,9 +168,11 @@ class _$AppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: elevation,
       title: icon ??
           titleWidget ??
-          Text(title.orEmpty,
-              style: CoolMoviesTextStyle.header.largeHeader
-                  .copyWith(color: context.colorProvider.cardTitleColor)),
+          Text(
+            title.orEmpty,
+            style: CoolMoviesTextStyle.header.largeHeader
+                .copyWith(color: context.colorProvider.cardTitleColor),
+          ),
       automaticallyImplyLeading: automaticallyImpliesLeading,
       actions: actions,
       centerTitle: centerTitle,

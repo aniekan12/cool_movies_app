@@ -38,7 +38,7 @@ class MoviesWidget extends StatelessWidget {
               ),
               20.verticalGap,
               TitleWidget.withIcon(
-                  title: movies.releaseDate.orEmpty,
+                  title: movies.releaseDate.orEmpty.toReadableDate,
                   icon: Icons.calendar_today),
               10.verticalGap,
               TitleWidget.withIcon(
