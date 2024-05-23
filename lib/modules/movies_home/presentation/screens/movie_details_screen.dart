@@ -1,5 +1,8 @@
+import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/comment_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/image_widget.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/star_rating_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/title_widget.dart';
 import 'package:coolmovies/modules/widgets/cool_movies_app_bar.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
@@ -11,6 +14,14 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> buildStarIcons() {
+      final edges = movies.movieReviewsByMovieId?.edges ?? [];
+      return edges
+          .map((_) =>
+              Icon(Icons.star, color: context.colorProvider.cardTitleColor))
+          .toList();
+    }
+
     return Scaffold(
       backgroundColor: context.colorProvider.backgroundDefault,
       appBar: CoolMoviesAppBar.primary(title: 'Detail'),
@@ -27,34 +38,41 @@ class MovieDetailsScreen extends StatelessWidget {
               ),
             ),
             10.verticalGap,
-            TitleWidget.withText(title: movies.title.orEmpty),
-            10.verticalGap,
+            Text(
+              movies.title.orEmpty,
+              style: CoolMoviesTextStyle.header.mediumHeader
+                  .copyWith(color: context.colorProvider.cardTitleColor),
+            ),
             10.verticalGap,
             Row(
               children: [
-                TitleWidget.withText(
-                    title: '${movies.releaseDate.orEmpty.toReadableDate}  |'),
-                TitleWidget.withText(
-                  title:
-                      '${movies.movieReviewsByMovieId!.edges!.first.node!.rating}',
+                Text(
+                  '${movies.releaseDate.orEmpty.toReadableDate}  |',
+                  style: CoolMoviesTextStyle.header.smallHeader
+                      .copyWith(color: context.colorProvider.cardTitleColor),
                 ),
-                Icon(Icons.star, color: context.colorProvider.cardTitleColor),
               ],
             ),
-            30.verticalGap,
-            TitleWidget.withText(
-              title: 'Reviews',
+            10.verticalGap,
+            Divider(color: context.colorProvider.cardTitleColor),
+            6.verticalGap,
+            Center(
+              child: Text(
+                'Reviews',
+                style: CoolMoviesTextStyle.header.mediumHeader
+                    .copyWith(color: context.colorProvider.cardTitleColor),
+              ),
             ),
+            6.verticalGap,
             Divider(color: context.colorProvider.cardTitleColor),
             10.verticalGap,
-            for (var review in movies.movieReviewsByMovieId!.edges!)
-              Row(
-                children: [
-                  TitleWidget.withText(
-                    title: review.node!.title.orEmpty,
-                  ),
-                ],
-              ),
+            Row(
+              children: [
+                CommentWidget(movieReviews: movies.movieReviewsByMovieId!),
+                10.horizontalGap,
+                StarRatingWidget(movieReviews: movies.movieReviewsByMovieId!),
+              ],
+            )
           ],
         ),
       ),
