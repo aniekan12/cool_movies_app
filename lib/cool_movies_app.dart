@@ -1,4 +1,5 @@
 import 'package:coolmovies/common/theme/color_provider.dart';
+import 'package:coolmovies/modules/movies_home/presentation/view_models/movie_review_viewmodel.dart';
 import 'package:coolmovies/modules/movies_home/presentation/view_models/movies_home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,9 @@ class _AccelerateMobileAppState extends State<CoolMoviesApp> {
         BlocProvider(
           create: (context) =>
               locator<MoviesHomeViewmodel>()..add(FetchMovies()),
+        ),
+        BlocProvider(
+          create: (context) => locator<MovieReviewViewmodel>(),
         ),
       ],
       child: ScreenUtilInit(

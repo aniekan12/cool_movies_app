@@ -2,6 +2,7 @@ import 'package:coolmovies/common/di/locator.dart';
 import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_model.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 import 'movies_home_api_datasource.dart';
 
@@ -76,7 +77,7 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
           'userReviewerId': model.userReviewerId,
           'body': model.body,
           'rating': model.rating,
-          'id': model.id,
+          'id': const Uuid().v4(),
         },
       ),
     );

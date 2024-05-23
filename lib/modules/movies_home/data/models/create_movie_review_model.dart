@@ -4,7 +4,7 @@ class CreateMovieReviewModel {
   final int rating;
   final String userReviewerId;
   final String body;
-  final String id;
+  final String? id;
 
   CreateMovieReviewModel({
     required this.title,
@@ -12,11 +12,10 @@ class CreateMovieReviewModel {
     required this.userReviewerId,
     required this.rating,
     required this.body,
-    required this.id,
+    this.id,
   })  : assert(title.isNotEmpty),
         assert(userReviewerId.isNotEmpty),
         assert(movieId.isNotEmpty),
         assert(rating >= 1 && rating <= 5),
-        assert(body.isNotEmpty),
-        assert(id.isNotEmpty);
+        assert(body.isNotEmpty);
 }

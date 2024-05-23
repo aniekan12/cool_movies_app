@@ -1,11 +1,16 @@
 import 'package:coolmovies/common/theme/size_config.dart';
 import 'package:coolmovies/common/typography/text_styles.dart';
+import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_model.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
+import 'package:coolmovies/modules/movies_home/presentation/view_models/movie_review_viewmodel.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/app_button.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/app_textfield.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/image_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/reviews_widget.dart';
 import 'package:coolmovies/modules/widgets/cool_movies_app_bar.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final Movies movies;
@@ -14,6 +19,97 @@ class MovieDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return SafeArea(
+                  child: ListView(
+                    padding: const EdgeInsets.all(16),
+                    children: [
+                      30.verticalGap,
+                      Center(
+                        child: Text('Add Review',
+                            style: CoolMoviesTextStyle.header.pageTitle1),
+                      ),
+                      20.verticalGap,
+                      CustomTextInputField.text(
+                        inputController: context
+                            .read<MovieReviewViewmodel>()
+                            .form
+                            .titleController,
+                        labelText: 'Title',
+                        hintText: 'Title',
+                      ),
+                      20.verticalGap,
+                      CustomTextInputField.text(
+                        inputController: context
+                            .read<MovieReviewViewmodel>()
+                            .form
+                            .descriptionController,
+                        labelText: 'Review',
+                        hintText: 'Review',
+                      ),
+                      20.verticalGap,
+                      CustomTextInputField.textBox(
+                        keyboardType: TextInputType.number,
+                        inputController: context
+                            .read<MovieReviewViewmodel>()
+                            .form
+                            .ratingController,
+                        labelText: 'Rating',
+                        hintText: 'Rating',
+                      ),
+                      30.verticalGap,
+                      AppButton.primary(
+                        state: context
+                            .read<MovieReviewViewmodel>()
+                            .form
+                            .validState,
+                        text: 'Add',
+                        onPressed: () => context.read<MovieReviewViewmodel>()
+                          ..add(
+                            AddMovieReview(
+                              CreateMovieReviewModel(
+                                title: context
+                                    .read<MovieReviewViewmodel>()
+                                    .form
+                                    .titleController
+                                    .controller
+                                    .text,
+                                body: context
+                                    .read<MovieReviewViewmodel>()
+                                    .form
+                                    .descriptionController
+                                    .controller
+                                    .text,
+                                rating: int.parse(context
+                                    .read<MovieReviewViewmodel>()
+                                    .form
+                                    .ratingController
+                                    .controller
+                                    .text),
+                                movieId: movies.id.orEmpty,
+                                userReviewerId: movies
+                                    .movieReviewsByMovieId!
+                                    .edges!
+                                    .first
+                                    .node!
+                                    .userByUserReviewerId!
+                                    .id
+                                    .orEmpty,
+                              ),
+                            ),
+                          ),
+                      ),
+                    ],
+                  ),
+                );
+              });
+        },
+        child: const Icon(Icons.add),
+      ),
       backgroundColor: context.colorProvider.backgroundDefault,
       appBar: CoolMoviesAppBar.primary(title: 'Detail'),
       body: Padding(

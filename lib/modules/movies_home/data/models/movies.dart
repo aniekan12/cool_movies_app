@@ -59,7 +59,18 @@ abstract class Nodes with _$Nodes {
     int? rating,
     String? title,
     String? body,
+    UserByUserReviewerId? userByUserReviewerId,
   }) = _Nodes;
 
   factory Nodes.fromJson(Map<String, dynamic> json) => _$NodesFromJson(json);
+}
+
+@freezed
+abstract class UserByUserReviewerId with _$UserByUserReviewerId {
+  const factory UserByUserReviewerId({
+    String? id,
+  }) = _UserByUserReviewerId;
+
+  factory UserByUserReviewerId.fromJson(Map<String, dynamic> json) =>
+      _$UserByUserReviewerIdFromJson(json);
 }
