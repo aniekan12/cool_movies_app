@@ -1,7 +1,9 @@
 import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/body_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/comment_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/image_widget.dart';
+import 'package:coolmovies/modules/movies_home/presentation/widgets/reviews_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/star_rating_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/title_widget.dart';
 import 'package:coolmovies/modules/widgets/cool_movies_app_bar.dart';
@@ -66,13 +68,16 @@ class MovieDetailsScreen extends StatelessWidget {
             6.verticalGap,
             Divider(color: context.colorProvider.cardTitleColor),
             10.verticalGap,
-            Row(
-              children: [
-                CommentWidget(movieReviews: movies.movieReviewsByMovieId!),
-                10.horizontalGap,
-                StarRatingWidget(movieReviews: movies.movieReviewsByMovieId!),
-              ],
-            )
+            ListView.builder(
+              itemCount: movies.movieReviewsByMovieId?.edges?.length ?? 0,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ReviewWidget(
+                    movieReviews:
+                        movies.movieReviewsByMovieId!.edges![index].node!);
+              },
+            ),
           ],
         ),
       ),

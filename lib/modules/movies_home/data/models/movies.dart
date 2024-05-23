@@ -58,6 +58,7 @@ abstract class Nodes with _$Nodes {
     String? id,
     int? rating,
     String? title,
+    String? body,
   }) = _Nodes;
 
   factory Nodes.fromJson(Map<String, dynamic> json) => _$NodesFromJson(json);

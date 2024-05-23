@@ -80,6 +80,7 @@ _$NodesImpl _$$NodesImplFromJson(Map<String, dynamic> json) => _$NodesImpl(
       id: json['id'] as String?,
       rating: (json['rating'] as num?)?.toInt(),
       title: json['title'] as String?,
+      body: json['body'] as String?,
     );
 
 Map<String, dynamic> _$$NodesImplToJson(_$NodesImpl instance) =>
@@ -87,4 +88,5 @@ Map<String, dynamic> _$$NodesImplToJson(_$NodesImpl instance) =>
       'id': instance.id,
       'rating': instance.rating,
       'title': instance.title,
+      'body': instance.body,
     };

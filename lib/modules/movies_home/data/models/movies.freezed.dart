@@ -833,6 +833,7 @@ mixin _$Nodes {
   String? get id => throw _privateConstructorUsedError;
   int? get rating => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  String? get body => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -844,7 +845,7 @@ abstract class $NodesCopyWith<$Res> {
   factory $NodesCopyWith(Nodes value, $Res Function(Nodes) then) =
       _$NodesCopyWithImpl<$Res, Nodes>;
   @useResult
-  $Res call({String? id, int? rating, String? title});
+  $Res call({String? id, int? rating, String? title, String? body});
 }
 
 /// @nodoc
@@ -863,6 +864,7 @@ class _$NodesCopyWithImpl<$Res, $Val extends Nodes>
     Object? id = freezed,
     Object? rating = freezed,
     Object? title = freezed,
+    Object? body = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -877,6 +879,10 @@ class _$NodesCopyWithImpl<$Res, $Val extends Nodes>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      body: freezed == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -888,7 +894,7 @@ abstract class _$$NodesImplCopyWith<$Res> implements $NodesCopyWith<$Res> {
       __$$NodesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, int? rating, String? title});
+  $Res call({String? id, int? rating, String? title, String? body});
 }
 
 /// @nodoc
@@ -905,6 +911,7 @@ class __$$NodesImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? rating = freezed,
     Object? title = freezed,
+    Object? body = freezed,
   }) {
     return _then(_$NodesImpl(
       id: freezed == id
@@ -919,6 +926,10 @@ class __$$NodesImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      body: freezed == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -926,7 +937,7 @@ class __$$NodesImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NodesImpl implements _Nodes {
-  const _$NodesImpl({this.id, this.rating, this.title});
+  const _$NodesImpl({this.id, this.rating, this.title, this.body});
 
   factory _$NodesImpl.fromJson(Map<String, dynamic> json) =>
       _$$NodesImplFromJson(json);
@@ -937,10 +948,12 @@ class _$NodesImpl implements _Nodes {
   final int? rating;
   @override
   final String? title;
+  @override
+  final String? body;
 
   @override
   String toString() {
-    return 'Nodes(id: $id, rating: $rating, title: $title)';
+    return 'Nodes(id: $id, rating: $rating, title: $title, body: $body)';
   }
 
   @override
@@ -950,12 +963,13 @@ class _$NodesImpl implements _Nodes {
             other is _$NodesImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.body, body) || other.body == body));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, rating, title);
+  int get hashCode => Object.hash(runtimeType, id, rating, title, body);
 
   @JsonKey(ignore: true)
   @override
@@ -973,7 +987,10 @@ class _$NodesImpl implements _Nodes {
 
 abstract class _Nodes implements Nodes {
   const factory _Nodes(
-      {final String? id, final int? rating, final String? title}) = _$NodesImpl;
+      {final String? id,
+      final int? rating,
+      final String? title,
+      final String? body}) = _$NodesImpl;
 
   factory _Nodes.fromJson(Map<String, dynamic> json) = _$NodesImpl.fromJson;
 
@@ -983,6 +1000,8 @@ abstract class _Nodes implements Nodes {
   int? get rating;
   @override
   String? get title;
+  @override
+  String? get body;
   @override
   @JsonKey(ignore: true)
   _$$NodesImplCopyWith<_$NodesImpl> get copyWith =>
