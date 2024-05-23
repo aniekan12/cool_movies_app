@@ -4,7 +4,7 @@ class CreateMovieReviewModel {
   final int rating;
   final String userReviewerId;
   final String body;
-  final String? id;
+  String? id;
 
   CreateMovieReviewModel({
     required this.title,
@@ -16,6 +16,11 @@ class CreateMovieReviewModel {
   })  : assert(title.isNotEmpty),
         assert(userReviewerId.isNotEmpty),
         assert(movieId.isNotEmpty),
-        assert(rating >= 1 && rating <= 5),
+        assert(rating >= 1 && rating <= 10),
         assert(body.isNotEmpty);
+
+  @override
+  String toString() {
+    return 'CreateMovieReviewModel(title: $title, movieId: $movieId, rating: $rating, userReviewerId: $userReviewerId, body: $body, id: $id)';
+  }
 }

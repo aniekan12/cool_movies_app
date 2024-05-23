@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:coolmovies/common/theme/size_config.dart';
 import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_model.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:coolmovies/modules/movies_home/presentation/view_models/movie_review_viewmodel.dart';
+import 'package:coolmovies/modules/movies_home/presentation/view_models/movies_home_viewmodel.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/app_button.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/app_textfield.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/image_widget.dart';
@@ -22,6 +25,7 @@ class MovieDetailsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+              showDragHandle: true,
               context: context,
               builder: (context) {
                 return SafeArea(
@@ -52,7 +56,7 @@ class MovieDetailsScreen extends StatelessWidget {
                         hintText: 'Review',
                       ),
                       20.verticalGap,
-                      CustomTextInputField.textBox(
+                      CustomTextInputField.text(
                         keyboardType: TextInputType.number,
                         inputController: context
                             .read<MovieReviewViewmodel>()
@@ -62,46 +66,65 @@ class MovieDetailsScreen extends StatelessWidget {
                         hintText: 'Rating',
                       ),
                       30.verticalGap,
-                      AppButton.primary(
-                        state: context
-                            .read<MovieReviewViewmodel>()
-                            .form
-                            .validState,
-                        text: 'Add',
-                        onPressed: () => context.read<MovieReviewViewmodel>()
-                          ..add(
-                            AddMovieReview(
-                              CreateMovieReviewModel(
-                                title: context
-                                    .read<MovieReviewViewmodel>()
-                                    .form
-                                    .titleController
-                                    .controller
-                                    .text,
-                                body: context
-                                    .read<MovieReviewViewmodel>()
-                                    .form
-                                    .descriptionController
-                                    .controller
-                                    .text,
-                                rating: int.parse(context
-                                    .read<MovieReviewViewmodel>()
-                                    .form
-                                    .ratingController
-                                    .controller
-                                    .text),
-                                movieId: movies.id.orEmpty,
-                                userReviewerId: movies
-                                    .movieReviewsByMovieId!
-                                    .edges!
-                                    .first
-                                    .node!
-                                    .userByUserReviewerId!
-                                    .id
-                                    .orEmpty,
-                              ),
-                            ),
-                          ),
+                      BlocBuilder<MovieReviewViewmodel, MovieReviewState>(
+                        builder: (context, state) {
+                          log(state.toString());
+                          if (state is MoviesReviewAddSuccess) {
+                            Navigator.of(context);
+                            context
+                                .read<MoviesHomeViewmodel>()
+                                .add(FetchMovies());
+                          }
+                          if (state is MoviesReviewAdding) {
+                            return AppButton.primary(
+                              text: '',
+                              onPressed: () {},
+                              isLoading: true,
+                            );
+                          }
+                          return AppButton.primary(
+                            state: context
+                                .read<MovieReviewViewmodel>()
+                                .form
+                                .validState,
+                            text: 'Add',
+                            onPressed: () =>
+                                context.read<MovieReviewViewmodel>()
+                                  ..add(
+                                    AddMovieReview(
+                                      CreateMovieReviewModel(
+                                        title: context
+                                            .read<MovieReviewViewmodel>()
+                                            .form
+                                            .titleController
+                                            .controller
+                                            .text,
+                                        body: context
+                                            .read<MovieReviewViewmodel>()
+                                            .form
+                                            .descriptionController
+                                            .controller
+                                            .text,
+                                        rating: int.parse(context
+                                            .read<MovieReviewViewmodel>()
+                                            .form
+                                            .ratingController
+                                            .controller
+                                            .text),
+                                        movieId: movies.id.orEmpty,
+                                        userReviewerId: movies
+                                            .movieReviewsByMovieId!
+                                            .edges!
+                                            .first
+                                            .node!
+                                            .userByUserReviewerId!
+                                            .id
+                                            .orEmpty,
+                                      ),
+                                    ),
+                                  ),
+                          );
+                        },
                       ),
                     ],
                   ),

@@ -6,6 +6,16 @@ import 'package:uuid/uuid.dart';
 
 import 'movies_home_api_datasource.dart';
 
+const String createMovieReviewMutation = r"""
+mutation CreateMovieReview($title: String!, $movieId: UUID!, $userReviewerId: UUID!, $body: String!, $rating: Int!, $id: UUID!) {
+  createMovieReview(
+    input: {movieReview: {title: $title, movieId: $movieId, userReviewerId: $userReviewerId, body: $body, rating: $rating, id: $id}}
+  ) {
+    clientMutationId
+  }
+}
+""";
+
 class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
   MoviesHomeApiDatasourceImpl({GraphQLClient? client})
       : _client = client ?? locator.get<GraphQLClient>();
@@ -38,6 +48,9 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
             rating
             title
             body
+            userByUserReviewerId {
+              id
+            }
           }
         }
       }
@@ -59,25 +72,19 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
   @override
   Future<bool> createMovieReview(
       {required CreateMovieReviewModel model}) async {
+    final uuid = const Uuid().v4();
+    model.id = uuid;
     final result = await _client.mutate(
       MutationOptions(
         fetchPolicy: FetchPolicy.cacheAndNetwork,
-        document: gql(r"""
-                mutation CreateMovieReview(\$title: String!, $movieId: ID!, $userReviewerId: ID!, $body: String!, $rating: Int!, $id: ID!) {
-  createMovieReview(
-    input: {movieReview: {title: $title, movieId: $movieId, userReviewerId: $userReviewerId, body: $body, rating: $rating, id: $id}}
-  ) {
-    clientMutationId
-  }
-}
-        """),
+        document: gql(createMovieReviewMutation),
         variables: {
           'title': model.title,
           'movieId': model.movieId,
           'userReviewerId': model.userReviewerId,
           'body': model.body,
           'rating': model.rating,
-          'id': const Uuid().v4(),
+          'id': model.id,
         },
       ),
     );

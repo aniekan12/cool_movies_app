@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_model.dart';
 import 'package:coolmovies/modules/movies_home/domain/usecases/create_movie_review_usecase.dart';
@@ -17,9 +19,11 @@ class MovieReviewViewmodel extends Bloc<MovieReviewEvent, MovieReviewState> {
         super(MovieReviewInitial()) {
     on<AddMovieReview>((event, emit) async {
       emit(MoviesReviewAdding());
-      final failureOrMovies =
+      final failureOrAdded =
           await _movieReviewUsecase.invoke(event.createMovieReviewModel);
-      failureOrMovies.fold(
+      log(event.createMovieReviewModel.toString(), name: "review");
+      log(failureOrAdded.toString(), name: "state");
+      failureOrAdded.fold(
         (failure) => emit(MoviesReviewAddError(failure.message)),
         (isAdded) => emit(
             MoviesReviewAddSuccess(isAdded, "Review Successfully Created")),

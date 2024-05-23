@@ -38,24 +38,25 @@ class CustomTextInputField extends StatefulWidget {
     required InputController inputController,
     required String labelText,
     required String hintText,
+    TextInputType? keyboardType,
   }) =>
       CustomTextInputField._(
         labelText: labelText,
         hintText: hintText,
+        keyboardType: keyboardType,
         inputController: inputController,
       );
   factory CustomTextInputField.textBox({
     required InputController inputController,
     required String labelText,
     required String hintText,
-    required TextInputType keyboardType,
+    TextInputType? keyboardType,
   }) =>
       CustomTextInputField._(
         labelText: labelText,
-        maxLines: 4,
         hintText: hintText,
         obscureText: false,
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType,
         inputController: null,
       );
 

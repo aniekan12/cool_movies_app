@@ -1,3 +1,4 @@
+import 'package:coolmovies/common/services/graphql_service.dart';
 import 'package:coolmovies/modules/movies_home/data/data_source/movies_home_api_datasource_impl.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,14 +8,15 @@ import 'package:mockito/annotations.dart';
 
 import 'movies_home_api_datasource_test.mocks.dart';
 
-@GenerateMocks([GraphQLClient])
+@GenerateNiceMocks([MockSpec<GraphQLService>()])
 void main() {
-  late MockGraphQLClient mockGraphQLClient;
+  late MockGraphQLService mockGraphQLService;
   late MoviesHomeApiDatasourceImpl datasource;
 
   setUp(() {
-    mockGraphQLClient = MockGraphQLClient();
-    datasource = MoviesHomeApiDatasourceImpl(client: mockGraphQLClient);
+    mockGraphQLService = MockGraphQLService();
+    datasource = MoviesHomeApiDatasourceImpl(
+        client: mockGraphQLService.initClient().value);
   });
 
   group('MoviesHomeApiDatasourceImpl', () {
@@ -56,8 +58,9 @@ void main() {
         },
       };
 
-      when(mockGraphQLClient.query(any)).thenAnswer(
+      when(mockGraphQLService.initClient().value.query(any)).thenAnswer(
         (_) async => QueryResult(
+          options: any,
           source: QueryResultSource.network,
           data: mockResponse,
         ),
