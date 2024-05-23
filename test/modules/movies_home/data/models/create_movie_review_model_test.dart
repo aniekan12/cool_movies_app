@@ -6,6 +6,7 @@ void main() {
     test('should create a valid model', () {
       const title = 'Great movie!';
       const movieId = '123';
+      const userReviewerId = '456';
       const rating = 5;
       const body = 'This movie was amazing!';
       const id = '456';
@@ -13,6 +14,7 @@ void main() {
       final model = CreateMovieReviewModel(
         title: title,
         movieId: movieId,
+        userReviewerId: userReviewerId,
         rating: rating,
         body: body,
         id: id,
@@ -28,6 +30,7 @@ void main() {
     test('should throw an error if title is empty', () {
       const title = '';
       const movieId = '123';
+      const userReviewerId = '456';
       const rating = 5;
       const body = 'This movie was amazing!';
       const id = '456';
@@ -36,6 +39,7 @@ void main() {
         () => CreateMovieReviewModel(
           title: title,
           movieId: movieId,
+          userReviewerId: userReviewerId,
           rating: rating,
           body: body,
           id: id,
@@ -55,6 +59,7 @@ void main() {
         () => CreateMovieReviewModel(
           title: title,
           movieId: movieId,
+          userReviewerId: '456',
           rating: rating,
           body: body,
           id: id,
@@ -75,6 +80,7 @@ void main() {
           title: title,
           movieId: movieId,
           rating: rating,
+          userReviewerId: '456',
           body: body,
           id: id,
         ),
@@ -94,6 +100,7 @@ void main() {
           title: title,
           movieId: movieId,
           rating: rating,
+          userReviewerId: '456',
           body: body,
           id: id,
         ),
@@ -112,6 +119,7 @@ void main() {
       expect(
         () => CreateMovieReviewModel(
           title: title,
+          userReviewerId: '',
           movieId: movieId,
           rating: rating,
           body: body,
@@ -133,6 +141,7 @@ void main() {
           title: title,
           movieId: movieId,
           rating: rating,
+          userReviewerId: '456',
           body: body,
           id: id,
         ),

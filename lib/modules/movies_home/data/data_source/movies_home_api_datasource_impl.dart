@@ -1,4 +1,5 @@
 import 'package:coolmovies/common/di/locator.dart';
+import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_model.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -55,8 +56,35 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
   }
 
   @override
-  Future<bool> createMovieReview() {
-    // TODO: implement createMovieReview
-    throw UnimplementedError();
+  Future<bool> createMovieReview(
+      {required CreateMovieReviewModel model}) async {
+    final result = await _client.mutate(
+      MutationOptions(
+        fetchPolicy: FetchPolicy.cacheAndNetwork,
+        document: gql(r"""
+                mutation CreateMovieReview(\$title: String!, $movieId: ID!, $userReviewerId: ID!, $body: String!, $rating: Int!, $id: ID!) {
+  createMovieReview(
+    input: {movieReview: {title: $title, movieId: $movieId, userReviewerId: $userReviewerId, body: $body, rating: $rating, id: $id}}
+  ) {
+    clientMutationId
+  }
+}
+        """),
+        variables: {
+          'title': model.title,
+          'movieId': model.movieId,
+          'userReviewerId': model.userReviewerId,
+          'body': model.body,
+          'rating': model.rating,
+          'id': model.id,
+        },
+      ),
+    );
+
+    if (result.hasException) {
+      throw Exception(result.exception.toString());
+    }
+
+    return true;
   }
 }
