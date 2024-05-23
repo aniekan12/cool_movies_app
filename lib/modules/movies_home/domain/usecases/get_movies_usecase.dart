@@ -10,6 +10,8 @@ class GetMoviesUsecase
   GetMoviesUsecase({MoviesRepository? moviesRepository})
       : _moviesRepository = moviesRepository ?? locator.get<MoviesRepository>();
 
+  factory GetMoviesUsecase.instance() => locator.get<GetMoviesUsecase>();
+
   final MoviesRepository _moviesRepository;
   @override
   Future<Either<CoolMoviesException, List<Movies>>> invoke([void input]) {

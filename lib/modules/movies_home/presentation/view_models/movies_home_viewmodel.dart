@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:coolmovies/common/di/locator.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:coolmovies/modules/movies_home/domain/usecases/get_movies_usecase.dart';
 import 'package:meta/meta.dart';
@@ -13,7 +10,7 @@ class MoviesHomeViewmodel extends Bloc<MoviesHomeEvent, MoviesHomeState> {
   final GetMoviesUsecase _getMoviesUsecase;
 
   MoviesHomeViewmodel({GetMoviesUsecase? getMoviesUsecase})
-      : _getMoviesUsecase = getMoviesUsecase ?? locator.get<GetMoviesUsecase>(),
+      : _getMoviesUsecase = getMoviesUsecase ?? GetMoviesUsecase.instance(),
         super(MoviesHomeInitial()) {
     on<FetchMovies>((event, emit) async {
       emit(MoviesHomeLoading());

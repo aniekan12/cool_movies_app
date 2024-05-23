@@ -5,10 +5,13 @@ import 'package:coolmovies/modules/movies_home/data/models/create_movie_review_m
 import 'package:coolmovies/modules/movies_home/data/repository/movies_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetMoviesUsecase
+class CreateMovieReviewUsecase
     extends UseCase<CreateMovieReviewModel, CoolMoviesException, bool> {
-  GetMoviesUsecase({MoviesRepository? moviesRepository})
+  CreateMovieReviewUsecase({MoviesRepository? moviesRepository})
       : _moviesRepository = moviesRepository ?? locator.get<MoviesRepository>();
+
+  factory CreateMovieReviewUsecase.instance() =>
+      locator.get<CreateMovieReviewUsecase>();
 
   final MoviesRepository _moviesRepository;
   @override
