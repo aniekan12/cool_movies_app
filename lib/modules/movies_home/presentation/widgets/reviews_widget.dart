@@ -1,3 +1,5 @@
+import 'package:coolmovies/common/theme/color/cool_movies_colors.dart';
+import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
@@ -14,27 +16,25 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       child: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              movieReviews.title.orEmpty,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
+            Text(movieReviews.title.orEmpty,
+                style: CoolMoviesTextStyle.header.pageTitle1),
+            10.verticalGap,
             Text(
               movieReviews.body.orEmpty,
-              style: TextStyle(fontSize: 16),
+              style: CoolMoviesTextStyle.body.medium,
             ),
-            SizedBox(height: 10),
+            10.verticalGap,
             RatingBarIndicator(
               rating: movieReviews.rating!.toDouble(),
-              itemBuilder: (context, index) => Icon(
+              itemBuilder: (context, index) => const Icon(
                 Icons.star,
-                color: Colors.amber,
+                color: CoolMoviesColors.alternate,
               ),
               itemCount: 5,
               itemSize: 30.0,
