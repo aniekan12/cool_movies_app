@@ -1,11 +1,8 @@
+import 'package:coolmovies/common/theme/size_config.dart';
 import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/modules/movies_home/data/models/movies.dart';
-import 'package:coolmovies/modules/movies_home/presentation/widgets/body_widget.dart';
-import 'package:coolmovies/modules/movies_home/presentation/widgets/comment_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/image_widget.dart';
 import 'package:coolmovies/modules/movies_home/presentation/widgets/reviews_widget.dart';
-import 'package:coolmovies/modules/movies_home/presentation/widgets/star_rating_widget.dart';
-import 'package:coolmovies/modules/movies_home/presentation/widgets/title_widget.dart';
 import 'package:coolmovies/modules/widgets/cool_movies_app_bar.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +13,6 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buildStarIcons() {
-      final edges = movies.movieReviewsByMovieId?.edges ?? [];
-      return edges
-          .map((_) =>
-              Icon(Icons.star, color: context.colorProvider.cardTitleColor))
-          .toList();
-    }
-
     return Scaffold(
       backgroundColor: context.colorProvider.backgroundDefault,
       appBar: CoolMoviesAppBar.primary(title: 'Detail'),
@@ -42,16 +31,20 @@ class MovieDetailsScreen extends StatelessWidget {
             10.verticalGap,
             Text(
               movies.title.orEmpty,
-              style: CoolMoviesTextStyle.header.mediumHeader
+              style: CoolMoviesTextStyle.header.pageTitle1
                   .copyWith(color: context.colorProvider.cardTitleColor),
             ),
             10.verticalGap,
             Row(
               children: [
+                Icon(Icons.calendar_month,
+                    color: context.colorProvider.cardTitleColor),
+                5.horizontalGap,
                 Text(
-                  '${movies.releaseDate.orEmpty.toReadableDate}  |',
-                  style: CoolMoviesTextStyle.header.smallHeader
-                      .copyWith(color: context.colorProvider.cardTitleColor),
+                  '${movies.releaseDate.orEmpty.toReadableDate} ',
+                  style: CoolMoviesTextStyle.body.infoText.copyWith(
+                      fontSize: SizeConfig.pxToTextSize(14),
+                      color: context.colorProvider.cardTitleColor),
                 ),
               ],
             ),

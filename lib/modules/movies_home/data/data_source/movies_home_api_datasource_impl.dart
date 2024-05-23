@@ -53,4 +53,10 @@ class MoviesHomeApiDatasourceImpl implements MoviesHomeApiDatasource {
     final List movies = result.data!['allMovies']['nodes'];
     return movies.map((movie) => Movies.fromJson(movie)).toList();
   }
+
+  @override
+  Future<bool> createMovieReview() {
+    // TODO: implement createMovieReview
+    throw UnimplementedError();
+  }
 }

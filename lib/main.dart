@@ -14,21 +14,9 @@ import 'cool_movies_app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await injectDependencies();
-  registerErrorHandlers();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Bloc.observer = const AppBlocObserver();
   runApp(GraphQLProvider(
       client: locator<GraphQLService>().initClient(),
       child: const CoolMoviesApp()));
-}
-
-void registerErrorHandlers() {
-  final logger = LoggerFactory.getLogger();
-  FlutterError.onError = (err) {
-    logger.log(LogLevel.severe, err.summary, err.exception, err.stack);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    logger.log(LogLevel.severe, "PlatformDispatcher", error, stack);
-    return true;
-  };
 }

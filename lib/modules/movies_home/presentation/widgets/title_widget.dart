@@ -1,4 +1,3 @@
-import 'package:coolmovies/common/color/cool_movies_color.dart';
 import 'package:coolmovies/common/typography/text_styles.dart';
 import 'package:coolmovies/utils/cool_movies.extensions.dart';
 import 'package:flutter/material.dart';
