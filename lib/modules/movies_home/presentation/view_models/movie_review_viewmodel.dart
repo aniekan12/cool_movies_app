@@ -20,7 +20,7 @@ class MovieReviewViewmodel extends Bloc<MovieReviewEvent, MovieReviewState> {
     on<AddMovieReview>((event, emit) async {
       emit(MoviesReviewAdding());
       final failureOrAdded =
-          await _movieReviewUsecase.invoke(event.createMovieReviewModel!);
+          await _movieReviewUsecase.invoke(event.createMovieReviewModel);
       log(event.createMovieReviewModel.toString(), name: "review");
       log(failureOrAdded.toString(), name: "state");
       failureOrAdded.fold(
