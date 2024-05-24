@@ -16,7 +16,7 @@ class CreateMovieReviewModel {
   })  : assert(title.isNotEmpty),
         assert(userReviewerId.isNotEmpty),
         assert(movieId.isNotEmpty),
-        assert(rating >= 1 && rating <= 10),
+        assert(rating >= 1 && rating <= 5),
         assert(body.isNotEmpty);
 
   @override

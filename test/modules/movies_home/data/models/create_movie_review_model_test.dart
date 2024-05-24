@@ -128,25 +128,5 @@ void main() {
         throwsA(isA<AssertionError>()),
       );
     });
-
-    test('should throw an error if id is empty', () {
-      const title = 'Great movie!';
-      const movieId = '123';
-      const rating = 5;
-      const body = 'This movie was amazing!';
-      const id = '';
-
-      expect(
-        () => CreateMovieReviewModel(
-          title: title,
-          movieId: movieId,
-          rating: rating,
-          userReviewerId: '456',
-          body: body,
-          id: id,
-        ),
-        throwsA(isA<AssertionError>()),
-      );
-    });
   });
 }

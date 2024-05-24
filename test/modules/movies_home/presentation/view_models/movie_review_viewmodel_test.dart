@@ -25,7 +25,7 @@ void main() {
         title: 'Great Movie!',
         movieId: '030039-sosoos-9292',
         userReviewerId: '000-393939-sksks',
-        rating: 10,
+        rating: 5,
         body: 'This movie was amazing');
 
     blocTest(
