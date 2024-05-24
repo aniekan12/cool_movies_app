@@ -11,7 +11,7 @@ import 'cool_movies_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = const AppBlocObserver();
+  Bloc.observer = AppBlocObserver();
   await injectDependencies();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(GraphQLProvider(
