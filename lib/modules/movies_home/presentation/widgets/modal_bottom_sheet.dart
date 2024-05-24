@@ -12,7 +12,7 @@ class CoolMoviesModalBottomSheet {
     return showModalBottomSheet(
       context: context,
       builder: (context) => child,
-      isScrollControlled: isScrollControlled ?? true,
+      isScrollControlled: isScrollControlled ?? false,
       showDragHandle: showDraghandle,
     );
   }
